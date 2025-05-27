@@ -1,19 +1,23 @@
+import { VercelRequest, VercelResponse } from '@vercel/node';
 import app from './app';
 import connectDB from './config/mongo';
-import { VercelRequest, VercelResponse } from '@vercel/node';
 
-const PORT = process.env.PORT || 8000;
-
+// Initialize DB connection
 connectDB().catch(console.error);
 
-// Export as a module with both GET and POST handlers
-module.exports = async (req: VercelRequest, res: VercelResponse) => {
+// Export as serverless function
+export default async (req: VercelRequest, res: VercelResponse) => {
+  // Enable CORS for all routes
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+  
   return app(req, res);
 };
 
 // Local development server
-if (process.env.VERCEL_ENV !== 'production') {
+if (process.env.NODE_ENV === 'development') {
+  const PORT = process.env.PORT || 8000;
   app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Local server running on http://localhost:${PORT}`);
   });
 }

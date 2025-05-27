@@ -36,5 +36,12 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'OK' });
 });
 
+app.get('/api/debug', (req, res) => {
+  res.json({
+    status: 'working',
+    environment: process.env.NODE_ENV,
+    time: new Date().toISOString()
+  });
+});
 
 export default app;
