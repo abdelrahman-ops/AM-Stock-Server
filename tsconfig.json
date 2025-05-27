@@ -10,6 +10,6 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node"
   },
-  "include": ["src/**/*", "src/draft/auth.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
