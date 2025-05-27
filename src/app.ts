@@ -16,6 +16,7 @@ app.use(
         origin: [
             "http://localhost:5173" , 
             "https://am-stock-app.vercel.app",
+            "https://am-stock-server.vercel.app"
         ], 
         methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
         allowedHeaders: ['Content-Type', 'Authorization'],
@@ -36,30 +37,6 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'OK' });
 });
 
-app.get('/', (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Stock App API</title>
-        <style>
-          body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-          a { color: #0070f3; }
-        </style>
-      </head>
-      <body>
-        <h1>Welcome to Stock App API</h1>
-        <p>Status: <strong>running</strong></p>
-        <h2>Available Endpoints:</h2>
-        <ul>
-          <li><a href="/api/health">/api/health</a> - Health check</li>
-          <li><a href="/api/stocks">/api/stocks</a> - Stocks data</li>
-        </ul>
-        <p>Last updated: ${new Date().toLocaleString()}</p>
-      </body>
-    </html>
-  `);
-});
 
 app.get('/api/debug', (req, res) => {
   res.json({
@@ -67,6 +44,10 @@ app.get('/api/debug', (req, res) => {
     environment: process.env.NODE_ENV,
     time: new Date().toISOString()
   });
+});
+
+app.get('/', (req, res) => {
+  res.send('hi');
 });
 
 export default app;

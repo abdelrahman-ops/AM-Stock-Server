@@ -4,16 +4,16 @@
     {
       "src": "src/index.ts",
       "use": "@vercel/node",
-      "config": {
-        "maxLambdaSize": "15mb",
-        "includeFiles": ["src/**", "!src/**/*.test.ts"]
+      "config": { 
+        "includeFiles": ["src/**/*.ts", "dist/**/*.js"] 
       }
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "src/index.ts"
+      "src": "/(.*)",
+      "dest": "src/index.ts",
+      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
     }
   ]
 }
