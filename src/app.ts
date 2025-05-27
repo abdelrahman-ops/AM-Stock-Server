@@ -47,7 +47,28 @@ app.get('/api/debug', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('hi');
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Stock App API</title>
+        <style>
+          body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+          a { color: #0070f3; }
+        </style>
+      </head>
+      <body>
+        <h1>Welcome to Stock App API</h1>
+        <p>Status: <strong>running</strong></p>
+        <h2>Available Endpoints:</h2>
+        <ul>
+          <li><a href="/api/health">/api/health</a> - Health check</li>
+          <li><a href="/api/stocks">/api/stocks</a> - Stocks data</li>
+        </ul>
+        <p>Last updated: ${new Date().toLocaleString()}</p>
+      </body>
+    </html>
+  `);
 });
 
 export default app;
