@@ -18,6 +18,6 @@
     },
     "types": ["node", "express"],
   },
-  "include": ["src/**/*", "src/draft/stock.model.ts", "src/draft/seedSuperAdmin.ts", "src/draft/stock.service.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "src/draft"]
 }
