@@ -1,4 +1,4 @@
-import { Stock } from '../models/stock.model';
+import { Stock } from '../draft/stock.model';
 
 export const transformMockStockData = (mockData: any) => {
   return Object.entries(mockData).map(([symbol, stockData]: [string, any]) => ({
